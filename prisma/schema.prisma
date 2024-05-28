@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model ShopItem {
+  id Int
+  amount Int
+  userId    String
+  User   User @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+  @@id([userId, id])
+}
+
+model Score {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  amount     Int
+  mode      GameMode
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  User      User     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model User {
+  id        String      @id @default(cuid())
+  username  String   @unique @db.VarChar(50)
+  points    Int
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  Scores    Score[]
+  ShopItems    ShopItem[]
+}
+
+enum GameMode {
+  TIME60
+  TIME30
+}

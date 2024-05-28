@@ -1,0 +1,39 @@
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+     font-family: "Ubuntu";
+     src: url('/public/ubuntu-regular-webfont.woff') format('woff');
+}
+
+body {
+	background:#6F0516 url('/public/piesel-head2.png');
+	font-family: "Ubuntu";
+	color: #000;
+	margin:0px;
+	padding:0px;
+}
+
+@keyframes wowAnim {
+  from {
+    top: var(--from-top);
+    left: var(--from-left);
+    opacity: 0;
+  }
+  to {
+    top: var(--to-top);
+    left: var(--to-left);
+    opacity: 1;
+  }
+}
+
+@keyframes respectAnim {
+  from {
+    top: 270px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
