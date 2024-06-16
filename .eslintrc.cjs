@@ -33,7 +33,6 @@ const config = {
     "array-bracket-newline": ["error", "always"],
     "import/first": "error",
     "import/exports-last": "error",
-    "object-curly-spacing": ["error", "always"],
     "prefer-arrow/prefer-arrow-functions": [
       "error",
       {

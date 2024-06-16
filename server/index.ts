@@ -4,11 +4,14 @@ import { sendJsonError } from "./utils/errors"
 import userRouter from "./routes/user"
 import leaderboardRouter from "./routes/leaderboard"
 import cors from "cors"
+import activityRouter from "./routes/activity"
+import cookieParser from "cookie-parser"
 
 const app = express()
 const port = 3001
 
 app.use(cors())
+app.use(cookieParser())
 app.use(express.static(path.join(
   __dirname, "public"
 )))
@@ -19,6 +22,9 @@ app.use(
 )
 app.use(
   "/leaderboard", leaderboardRouter
+)
+app.use(
+  "/activity", activityRouter
 )
 
 app.use((
